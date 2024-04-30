@@ -3,7 +3,7 @@
 //  lia-app-uikit
 //
 //  Created by Kevin Henriksson (External - Magnit Global Sweden II AB) on 2024-04-29.
-//
+/*
 
 import UIKit
 
@@ -59,4 +59,4 @@ class ViewController: UIViewController {
 
 
 }
-
+*/

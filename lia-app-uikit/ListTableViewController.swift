@@ -42,5 +42,16 @@ class ListTableViewController: UITableViewController {
         return cell
     }
     
+    // Creating the navigation on cell tap.
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToDetail(forItemAt: indexPath.row)
+    }
+    
+    // Placeholder for the navigation function
+    func navigateToDetail(forItemAt index: Int) {
+        print("Placeholder for navigation. Item tapped: \(items[index])")
+        
+    }
     
 }
