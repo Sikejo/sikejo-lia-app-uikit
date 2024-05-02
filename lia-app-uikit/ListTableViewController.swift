@@ -43,7 +43,6 @@ class ListTableViewController: UITableViewController {
         cell.textLabel?.text = "Placeholder title"
         cell.accessoryType = .disclosureIndicator
         return cell
-        
     }
 
     // Supporting conditional editing of the table view
@@ -55,8 +54,7 @@ class ListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             items.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade
-            )
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -69,7 +67,6 @@ class ListTableViewController: UITableViewController {
     // Placeholder for the navigation function
     func navigateToDetail(forItemAt index: Int) {
         print("Placeholder for navigation. Item tapped: \(items[index])")
-        
     }
     
     
