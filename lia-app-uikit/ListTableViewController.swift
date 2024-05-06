@@ -35,12 +35,12 @@ class ListTableViewController: UITableViewController {
         return items.count
     }
     
-    // Creating and configuring a cell for each row in the table.  
+    // Creating and configuring a cell for each row in the table.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let myImage = UIImage(systemName: "star.fill")
         cell.imageView?.image = myImage
-        cell.textLabel?.text = "Placeholder title"
+        cell.textLabel?.text = items[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -67,6 +67,8 @@ class ListTableViewController: UITableViewController {
     // Placeholder for the navigation function
     func navigateToDetail(forItemAt index: Int) {
         print("Placeholder for navigation. Item tapped: \(items[index])")
+        let detailViewController = DetailViewController(header: items[index])
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
     
     
