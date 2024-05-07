@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3006F8AB2BE0D700005878C9 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006F8AA2BE0D700005878C9 /* ListTableViewController.swift */; };
+		3070BF6B2BEA56BF00E59768 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070BF6A2BEA56BF00E59768 /* HomeView.swift */; };
+		3070BF702BEA693400E59768 /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3070BF6C2BEA681500E59768 /* Nunito-VariableFont_wght.ttf */; };
 		30906FC62BE8FA600027A7D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC52BE8FA600027A7D5 /* Constants.swift */; };
 		30906FC82BE8FC890027A7D5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC72BE8FC890027A7D5 /* Models.swift */; };
 		30906FCA2BE8FF490027A7D5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC92BE8FF490027A7D5 /* APIManager.swift */; };
@@ -40,6 +42,8 @@
 
 /* Begin PBXFileReference section */
 		3006F8AA2BE0D700005878C9 /* ListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
+		3070BF6A2BEA56BF00E59768 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3070BF6C2BEA681500E59768 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-VariableFont_wght.ttf"; path = "../../../Library/Fonts/Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		30906FC52BE8FA600027A7D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		30906FC72BE8FC890027A7D5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		30906FC92BE8FF490027A7D5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -106,12 +110,14 @@
 			isa = PBXGroup;
 			children = (
 				DC9E0F522BE10E5600FED25D /* DetailViewController */,
+				3070BF6A2BEA56BF00E59768 /* HomeView.swift */,
 				31167F582BE033BC00C58976 /* AppDelegate.swift */,
 				31167F5A2BE033BC00C58976 /* SceneDelegate.swift */,
 				3006F8AA2BE0D700005878C9 /* ListTableViewController.swift */,
 				30906FC72BE8FC890027A7D5 /* Models.swift */,
 				30906FC92BE8FF490027A7D5 /* APIManager.swift */,
 				30906FC52BE8FA600027A7D5 /* Constants.swift */,
+				3070BF6C2BEA681500E59768 /* Nunito-VariableFont_wght.ttf */,
 				31167F612BE033BE00C58976 /* Assets.xcassets */,
 				31167F632BE033BE00C58976 /* LaunchScreen.storyboard */,
 				31167F662BE033BE00C58976 /* Info.plist */,
@@ -275,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30906FCA2BE8FF490027A7D5 /* APIManager.swift in Sources */,
+				3070BF6B2BEA56BF00E59768 /* HomeView.swift in Sources */,
 				31167F592BE033BC00C58976 /* AppDelegate.swift in Sources */,
 				31167F5B2BE033BC00C58976 /* SceneDelegate.swift in Sources */,
 				3006F8AB2BE0D700005878C9 /* ListTableViewController.swift in Sources */,

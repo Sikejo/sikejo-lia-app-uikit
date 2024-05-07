@@ -13,16 +13,25 @@ class ListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Registering a UITableViewCell for use in creating new table cells
+        // Registering a UITableViewCell for use in creating new table cells.
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.backgroundColor = UIColor(named: "HomeColor")
         Task {
             await loadDogBreeds()
         }
     }
     
-    // MARK: - Calling the API function
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let appearance = UINavigationBarAppearance()
+        // Setting the navigation bar's background color.
+        appearance.backgroundColor = UIColor(named: "HomeColor")
+        // Applying the appearance settings when the view's edge aligns with the navigation bar's edge.
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
     
-    // Define an asynchronous function to load dog breeds.
+    // MARK: - Calling the API function
+    // Defining an asynchronous function to load dog breeds.
     func loadDogBreeds() async {
         // Try to fetch the list of dog breeds using the shared API manager.
         // If the fetching fails and returns nil, print an error message and exit the function.
@@ -56,7 +65,14 @@ class ListTableViewController: UITableViewController {
         cell.imageView?.image = myImage
         cell.textLabel?.text = items[indexPath.row]
         cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .default
         return cell
+    }
+    
+    // Setting background color for list.
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.contentView.backgroundColor = UIColor.clear
+        cell.backgroundColor = UIColor.clear
     }
     
     // Creating the navigation on cell tap.
@@ -64,7 +80,7 @@ class ListTableViewController: UITableViewController {
         navigateToDetail(forItemAt: indexPath.row)
     }
     
-    // Placeholder for the navigation function
+    // Placeholder for the navigation function.
     func navigateToDetail(forItemAt index: Int) {
         print("Placeholder for navigation. Item tapped: \(items[index])")
         let detailViewController = DetailViewController(header: items[index])
