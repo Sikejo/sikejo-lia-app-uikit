@@ -9,21 +9,35 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
     
-    // Creating a list of dummy data.
-    // Generates a list of * strings ("Item").
-    // .enumerated transforms the array into a sequence of pairs - "Item" and Count.
-    // The closure is applied to each element of the enumerated array.
-    // This transforms each pair from the enumerated list into a formatted string
-    // that includes a sequentially increasing number followed by the value "Item".
-    var items: [String] = Array(repeating: "Item", count: 100).enumerated().map { "\($0.0 + 1) - \($0.1)" }
-    
+    var items : [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Registering a UITableViewCell for use in creating new table cells
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        Task {
+            await loadDogBreeds()
+        }
     }
     
+    // MARK: - Calling the API function
+    
+    // Define an asynchronous function to load dog breeds.
+    func loadDogBreeds() async {
+        // Try to fetch the list of dog breeds using the shared API manager.
+        // If the fetching fails and returns nil, print an error message and exit the function.
+        guard let breeds = await APIManager.shared.fetchDogBreeds() else {
+            print("Failed to load dog breeds")
+            return
+        }
+        // If fetching is successful, extract the names of the breeds and store them in the 'items' array.
+        // The 'map' function is used to transform the array of breed objects into an array of their names.
+        self.items = breeds.map { $0.name }
+        DispatchQueue.main.async {
+            // Reload the table view data to reflect the new list of dog breeds.
+            self.tableView.reloadData()
+        }
+    }
     
     // Returning the number of sections in the table - 1.
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -44,20 +58,6 @@ class ListTableViewController: UITableViewController {
         cell.accessoryType = .disclosureIndicator
         return cell
     }
-
-    // Supporting conditional editing of the table view
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    
-    // Creating the functionality to edit the table view
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            items.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
     
     // Creating the navigation on cell tap.
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -70,6 +70,4 @@ class ListTableViewController: UITableViewController {
         let detailViewController = DetailViewController(header: items[index])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
-    
-    
 }
