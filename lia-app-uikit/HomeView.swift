@@ -22,6 +22,7 @@ class HomeView: UIViewController {
             
     override func viewDidLoad() {
         super.viewDidLoad()
+        super.viewDidLoad()
         setupUI()
         // Linking the button press to the method.
         self.navButton.addTarget(self, action: #selector(navigateToList), for: .touchUpInside)

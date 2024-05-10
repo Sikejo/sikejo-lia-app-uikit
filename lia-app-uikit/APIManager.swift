@@ -14,6 +14,8 @@ class APIManager {
     
     // Define the base URL for fetching dog breeds
     let baseURL = "https://api.thedogapi.com/v1/breeds?limit=1000&page=0"
+    let infoURL = "https://api.thedogapi.com/v1/breeds/:breed_id"
+    let imageURL = "https://api.thedogapi.com/v1/images/:image_id?sub_id&include_vote=&include_favourite"
     
     // Define an asynchronous function to fetch dog breeds from the API
     let apiKey = Constants.API_KEY

@@ -47,7 +47,7 @@ class ListTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-    
+
     // Returning the number of sections in the table - 1.
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -64,6 +64,7 @@ class ListTableViewController: UITableViewController {
         let myImage = UIImage(systemName: "star.fill")
         cell.imageView?.image = myImage
         cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .default
         return cell
@@ -80,9 +81,8 @@ class ListTableViewController: UITableViewController {
         navigateToDetail(forItemAt: indexPath.row)
     }
     
-    // Placeholder for the navigation function.
+    // Navigating to the detail view. 
     func navigateToDetail(forItemAt index: Int) {
-        print("Placeholder for navigation. Item tapped: \(items[index])")
         let detailViewController = DetailViewController(header: items[index])
         navigationController?.pushViewController(detailViewController, animated: true)
     }
