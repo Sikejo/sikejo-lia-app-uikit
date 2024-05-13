@@ -49,7 +49,7 @@ class HomeView: UIViewController {
         
         // Setting up the app title
         let homeTextView = UITextView()
-        homeTextView.text = "Lia Dog Breed App"
+        homeTextView.text = greetingLogic() + "\n Welcome to Lia Dog Breed App"
         homeTextView.font = UIFont(name: "Nunito-Regular", size: 36)
         homeTextView.backgroundColor = UIColor(named: "HomeColor")
         homeTextView.textAlignment = .center
@@ -75,5 +75,28 @@ class HomeView: UIViewController {
     @objc func navigateToList() {
         let ltvc = ListTableViewController()
         self.navigationController?.pushViewController(ltvc, animated: true)
+    }
+    
+    // Creating the time based greeting text function.
+    func greetingLogic() -> String {
+        let hour = Calendar.current.component(.hour, from: Date())
+        
+        let NEW_DAY = 0
+        let NOON = 12
+        let SUNSET = 18
+        let MIDNIGHT = 24
+        
+        var greetingText = "Welcome!"
+        switch hour {
+        case NEW_DAY..<NOON:
+            greetingText = "Good Morning!"
+        case NOON..<SUNSET:
+            greetingText = "Good Afternoon!"
+        case SUNSET..<MIDNIGHT:
+            greetingText = "Good Evening!"
+        default:
+            _ = "Hello!"
+        }
+        return greetingText
     }
 }
