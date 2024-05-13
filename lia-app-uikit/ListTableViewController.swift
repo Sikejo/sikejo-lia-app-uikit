@@ -19,10 +19,6 @@ class ListTableViewController: UITableViewController {
         Task {
             await loadDogBreeds()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         let appearance = UINavigationBarAppearance()
         // Setting the navigation bar's background color.
         appearance.backgroundColor = UIColor(named: "HomeColor")

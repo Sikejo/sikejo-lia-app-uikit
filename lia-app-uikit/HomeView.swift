@@ -9,26 +9,25 @@ import UIKit
 
 class HomeView: UIViewController {
     
-    // Initializing the navigation button and configuring its appearance.
-    private let navButton: UIButton = {
-        let navButton = UIButton()
+    private var navButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupUI()
+    }
+    
+    private func setupUI() {
+        // Initializing the navigation button and its appearance.
+        navButton = UIButton()
         navButton.backgroundColor = UIColor(named: "HomeColor")
         navButton.setTitleColor(.black, for: .normal)
         navButton.setTitle("To the list ➔", for: .normal)
         navButton.titleLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
         navButton.layer.cornerRadius = 7
-        return navButton
-    }()
-            
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        super.viewDidLoad()
-        setupUI()
-        // Linking the button press to the method.
-        self.navButton.addTarget(self, action: #selector(navigateToList), for: .touchUpInside)
-    }
-    
-    private func setupUI() {
+        
+        // Linking the button press to the method
+        navButton.addTarget(self, action: #selector(navigateToList), for: .touchUpInside)
+        
         // Setting up a vertical stack view for the layout.
         let logoStackView = UIStackView()
         logoStackView.axis = .vertical
@@ -70,7 +69,6 @@ class HomeView: UIViewController {
             logoStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             logoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             logoStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)])
-        
     }
     
     // Navigating to ListTableViewController.
