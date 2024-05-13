@@ -95,7 +95,7 @@ class HomeView: UIViewController {
         case SUNSET..<MIDNIGHT:
             greetingText = "Good Evening!"
         default:
-            _ = "Welcome!"
+            _ = "Hello!"
         }
         return greetingText
     }
