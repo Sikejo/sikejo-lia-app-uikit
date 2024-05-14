@@ -16,7 +16,7 @@ class HomeView: UIViewController {
     
     private func setupUI() {
         // Initializing the navigation button and its appearance.
-        let navButton = CommonUI.styledButton(title: "To the list ➔", fontSize: 20)
+        let navButton = CommonUI.styledButton(title: "list_nav_button".localized, fontSize: 20)
         
         // Linking the button press to the method
         navButton.addTarget(self, action: #selector(navigateToList), for: .touchUpInside)
@@ -41,7 +41,7 @@ class HomeView: UIViewController {
         logoImageView.image = UIImage(named: "AppLogo")
         
         // Setting up the app title
-        let homeTextView = CommonUI.styledTextView(text: greetingLogic() + "\n Welcome to Lia Dog Breed App", fontSize: 36)
+        let homeTextView = CommonUI.styledTextView(text: greetingLogic() + "welcome_message".localized, fontSize: 36)
         
         // Assembling the views in the stack.
         navButtonView.addArrangedSubview(navButton)
@@ -74,17 +74,15 @@ class HomeView: UIViewController {
         let SUNSET = 18
         let MIDNIGHT = 24
         
-        var greetingText = "Welcome!"
         switch hour {
         case NEW_DAY..<NOON:
-            greetingText = "Good Morning!"
+            return "good_morning".localized
         case NOON..<SUNSET:
-            greetingText = "Good Afternoon!"
+            return "good_afternoon".localized
         case SUNSET..<MIDNIGHT:
-            greetingText = "Good Evening!"
+            return "good_evening".localized
         default:
-            _ = "Hello!"
+            return "default_message".localized
         }
-        return greetingText
     }
 }

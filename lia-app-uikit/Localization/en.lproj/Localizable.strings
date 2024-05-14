@@ -1,0 +1,15 @@
+/* 
+  Localizable.strings
+  lia-app-uikit
+
+  Created by Alice Wheeler on 2024-05-14.
+  
+*/
+
+"welcome_message" = "Welcome to Dog Lia Breed App";
+"good_morning" = "Good Morning!";
+"good_afternoon" = "Good Afternoon!";
+"good_evening" = "Good Evening!";
+"default_message" = "Hello!";
+"list_nav_button" = "To the list ➔";
+
