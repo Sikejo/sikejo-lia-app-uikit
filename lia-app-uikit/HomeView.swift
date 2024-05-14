@@ -8,9 +8,7 @@
 import UIKit
 
 class HomeView: UIViewController {
-    
-    private var navButton: UIButton!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -18,12 +16,7 @@ class HomeView: UIViewController {
     
     private func setupUI() {
         // Initializing the navigation button and its appearance.
-        navButton = UIButton()
-        navButton.backgroundColor = UIColor(named: "HomeColor")
-        navButton.setTitleColor(.black, for: .normal)
-        navButton.setTitle("To the list ➔", for: .normal)
-        navButton.titleLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
-        navButton.layer.cornerRadius = 7
+        let navButton = CommonUI.styledButton(title: "To the list ➔", fontSize: 20)
         
         // Linking the button press to the method
         navButton.addTarget(self, action: #selector(navigateToList), for: .touchUpInside)
@@ -48,12 +41,7 @@ class HomeView: UIViewController {
         logoImageView.image = UIImage(named: "AppLogo")
         
         // Setting up the app title
-        let homeTextView = UITextView()
-        homeTextView.text = greetingLogic() + "\n Welcome to Lia Dog Breed App"
-        homeTextView.font = UIFont(name: "Nunito-Regular", size: 36)
-        homeTextView.backgroundColor = UIColor(named: "HomeColor")
-        homeTextView.textAlignment = .center
-        homeTextView.isEditable = false
+        let homeTextView = CommonUI.styledTextView(text: greetingLogic() + "\n Welcome to Lia Dog Breed App", fontSize: 36)
         
         // Assembling the views in the stack.
         navButtonView.addArrangedSubview(navButton)

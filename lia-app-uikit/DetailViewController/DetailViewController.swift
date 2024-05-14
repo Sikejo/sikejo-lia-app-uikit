@@ -39,18 +39,12 @@ class DetailViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
 
-        
-        let titleLabel = UILabel()
-        titleLabel.text = header
-        titleLabel.font = UIFont(name: "Nunito-Regular", size: 25)
+        let titleLabel = CommonUI.styledLabel(text: header, fontSize: 25)
         titleLabel.textAlignment = .center
-        
-        let bodyTextView = UITextView()
-        bodyTextView.backgroundColor = UIColor(named: "HomeColor")
-        bodyTextView.textAlignment = .justified
+
+        let bodyTextView = CommonUI.styledTextView(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", fontSize: 15)
         bodyTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        bodyTextView.font = UIFont(name: "Nunito-Regular", size: 15)
-        bodyTextView.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis eros viverra, bibendum urna et, tincidunt odio. Aenean leo odio, finibus in mi in, tincidunt pharetra nunc. Sed sollicitudin eu orci non tempus. Nulla vitae auctor nisi. Donec laoreet, felis ut lobortis sodales, purus dui scelerisque enim, sit amet cursus ligula lectus quis leo. Aliquam ac turpis nec arcu congue pretium et a leo. Nulla quis lectus feugiat, porta elit id, finibus nisi. Proin sed ligula sed lacus scelerisque congue. Etiam a suscipit lorem. Suspendisse ultrices sem vitae tempor posuere. Duis auctor nibh in nisi pretium sollicitudin. Donec lacus dui, consectetur nec aliquet et, commodo vel arcu."
+        bodyTextView.textAlignment = .justified
         
         innerStackView.addArrangedSubview(titleLabel)
         innerStackView.addArrangedSubview(bodyTextView)
