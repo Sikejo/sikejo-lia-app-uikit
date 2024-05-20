@@ -61,8 +61,8 @@ class HomeView: UIViewController {
     
     // Navigating to ListTableViewController.
     @objc func navigateToList() {
-        let ltvc = ListTableViewController()
-        self.navigationController?.pushViewController(ltvc, animated: true)
+        let listTableViewController = ListTableViewController(listTableViewModel: ListTableViewModel())
+        self.navigationController?.pushViewController(listTableViewController, animated: true)
     }
     
     // Creating the time based greeting text function.
