@@ -15,3 +15,11 @@ struct Breed: Codable {
 struct Response: Codable {
     let breeds: [Breed]
 }
+
+struct ListItem: Equatable {
+    static func == (lhs: ListItem, rhs: ListItem) -> Bool {
+        return lhs.breed.name == rhs.breed.name
+    }
+    
+    var breed: Breed
+}
