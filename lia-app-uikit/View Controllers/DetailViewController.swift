@@ -19,7 +19,7 @@ class DetailViewController: UIViewController {
     }
         
     private func setupUI() {
-        // Main Stack View
+        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.backgroundColor = UIColor(named: "HomeColor")
