@@ -9,7 +9,16 @@ import UIKit
 
 class ListTableViewController: UITableViewController {
     
-    var items : [String] = []
+    var viewModel: ListTableViewModel
+
+        init(listTableViewModel: ListTableViewModel) {
+            self.viewModel = listTableViewModel
+            super.init(style: .plain)
+        }
+
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,31 +26,19 @@ class ListTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = UIColor(named: "HomeColor")
         Task {
-            await loadDogBreeds()
+            await viewModel.loadDogBreeds()
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
         let appearance = UINavigationBarAppearance()
         // Setting the navigation bar's background color.
         appearance.backgroundColor = UIColor(named: "HomeColor")
         // Applying the appearance settings when the view's edge aligns with the navigation bar's edge.
         navigationController?.navigationBar.scrollEdgeAppearance = appearance
-    }
-    
-    // MARK: - Calling the API function
-    // Defining an asynchronous function to load dog breeds.
-    func loadDogBreeds() async {
-        // Try to fetch the list of dog breeds using the shared API manager.
-        // If the fetching fails and returns nil, print an error message and exit the function.
-        guard let breeds = await APIManager.shared.fetchDogBreeds() else {
-            print("Failed to load dog breeds")
-            return
-        }
-        // If fetching is successful, extract the names of the breeds and store them in the 'items' array.
-        // The 'map' function is used to transform the array of breed objects into an array of their names.
-        self.items = breeds.map { $0.name }
-        DispatchQueue.main.async {
-            // Reload the table view data to reflect the new list of dog breeds.
-            self.tableView.reloadData()
-        }
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(navigateToFavourites))
     }
 
     // Returning the number of sections in the table - 1.
@@ -51,7 +48,7 @@ class ListTableViewController: UITableViewController {
     
     // Returning the number of rows in the section, which is equal to the number of items.
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return viewModel.items.count
     }
     
     // Creating and configuring a cell for each row in the table.
@@ -59,7 +56,7 @@ class ListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let myImage = UIImage(systemName: "star.fill")
         cell.imageView?.image = myImage
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = viewModel.items[indexPath.row].breed.name
         cell.textLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .default
@@ -77,9 +74,37 @@ class ListTableViewController: UITableViewController {
         navigateToDetail(forItemAt: indexPath.row)
     }
     
+    // Creating the functionality to edit the table view
+    override func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+    {
+        let modifyAction = UIContextualAction(style: .normal, title:  "Favourite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            self.viewModel.toggleFavorite(for: indexPath.row)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+
+            success(true)
+
+            // After setting or updating the "favoriteBreeds" key in UserDefaults
+            print("Favorite Breeds: \(UserDefaults.standard.array(forKey: "favoriteBreeds") ?? [])")
+
+        })
+
+        modifyAction.image = UIImage(systemName: "heart.fill")
+
+        modifyAction.backgroundColor = viewModel.isFavorite(for: indexPath.row) ? .green : .blue
+
+        return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+    
     // Navigating to the detail view. 
     func navigateToDetail(forItemAt index: Int) {
-        let detailViewController = DetailViewController(header: items[index])
+        let detailViewController = DetailViewController(header: viewModel.items[index].breed.name)
         navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    @objc
+    func navigateToFavourites() {
+        let favouriteViewController = FavouriteViewController(favouriteViewModel: FavouriteViewModel())
+        navigationController?.pushViewController(favouriteViewController, animated: true)
     }
 }
