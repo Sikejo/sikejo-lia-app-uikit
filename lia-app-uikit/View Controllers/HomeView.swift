@@ -16,7 +16,7 @@ class HomeView: UIViewController {
     
     private func setupUI() {
         // Initializing the navigation button and its appearance.
-        let navButton = CommonUI.styledButton(title: "To the list ➔", fontSize: 20)
+        let navButton = CommonUI.styledButton(title: "list_nav_button".localized, fontSize: 20)
         
         // Linking the button press to the method
         navButton.addTarget(self, action: #selector(navigateToList), for: .touchUpInside)

@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		3006F8AB2BE0D700005878C9 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3006F8AA2BE0D700005878C9 /* ListTableViewController.swift */; };
-		3028DC062BEE489200866B5D /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3070BF6C2BEA681500E59768 /* Nunito-VariableFont_wght.ttf */; };
 		3028DC082BF248CF00866B5D /* CommonUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028DC072BF248CF00866B5D /* CommonUI.swift */; };
 		3028DC112BF389B100866B5D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3028DC132BF389B100866B5D /* Localizable.strings */; };
 		3028DC162BF38B6C00866B5D /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028DC152BF38B6C00866B5D /* Localization.swift */; };
 		3028DC1C2BF38D6700866B5D /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028DC1B2BF38D6700866B5D /* String+Localization.swift */; };
+		3028DC222BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3028DC202BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf */; };
+		3028DC232BFB81E900866B5D /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3028DC212BFB81E900866B5D /* Nunito-VariableFont_wght.ttf */; };
 		3070BF6B2BEA56BF00E59768 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070BF6A2BEA56BF00E59768 /* HomeView.swift */; };
 		30906FC62BE8FA600027A7D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC52BE8FA600027A7D5 /* Constants.swift */; };
 		30906FC82BE8FC890027A7D5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC72BE8FC890027A7D5 /* Models.swift */; };
@@ -51,8 +52,9 @@
 		3028DC142BF389B800866B5D /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		3028DC152BF38B6C00866B5D /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
 		3028DC1B2BF38D6700866B5D /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		3028DC202BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		3028DC212BFB81E900866B5D /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		3070BF6A2BEA56BF00E59768 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		3070BF6C2BEA681500E59768 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Nunito-VariableFont_wght.ttf"; path = "../../../Library/Fonts/Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		30906FC52BE8FA600027A7D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		30906FC72BE8FC890027A7D5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		30906FC92BE8FF490027A7D5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -132,6 +134,15 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		3028DC1F2BFB81D000866B5D /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				3028DC202BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf */,
+				3028DC212BFB81E900866B5D /* Nunito-VariableFont_wght.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		31167F4C2BE033BC00C58976 = {
 			isa = PBXGroup;
 			children = (
@@ -155,12 +166,12 @@
 		31167F572BE033BC00C58976 /* lia-app-uikit */ = {
 			isa = PBXGroup;
 			children = (
-				DC9E0F522BE10E5600FED25D /* View Controllers */,
+				3028DC1F2BFB81D000866B5D /* Fonts */,
 				3028DC1A2BF38D0300866B5D /* Utilities */,
+				DC9E0F522BE10E5600FED25D /* View Controllers */,
 				3028DC182BF38CC500866B5D /* App */,
 				3028DC172BF38C3300866B5D /* Localization */,
 				3028DC192BF38CD900866B5D /* Network */,
-				3070BF6C2BEA681500E59768 /* Nunito-VariableFont_wght.ttf */,
 				31167F612BE033BE00C58976 /* Assets.xcassets */,
 				31167F632BE033BE00C58976 /* LaunchScreen.storyboard */,
 				31167F662BE033BE00C58976 /* Info.plist */,
@@ -302,7 +313,8 @@
 			files = (
 				31167F652BE033BE00C58976 /* LaunchScreen.storyboard in Resources */,
 				3028DC112BF389B100866B5D /* Localizable.strings in Resources */,
-				3028DC062BEE489200866B5D /* Nunito-VariableFont_wght.ttf in Resources */,
+				3028DC222BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf in Resources */,
+				3028DC232BFB81E900866B5D /* Nunito-VariableFont_wght.ttf in Resources */,
 				31167F622BE033BE00C58976 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
