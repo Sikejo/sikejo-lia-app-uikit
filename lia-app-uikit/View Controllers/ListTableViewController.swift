@@ -10,15 +10,15 @@ import UIKit
 class ListTableViewController: UITableViewController {
     
     var viewModel: ListTableViewModel
-
-        init(listTableViewModel: ListTableViewModel) {
-            self.viewModel = listTableViewModel
-            super.init(style: .plain)
-        }
-
-        required init?(coder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
+    
+    init(listTableViewModel: ListTableViewModel) {
+        self.viewModel = listTableViewModel
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +27,7 @@ class ListTableViewController: UITableViewController {
         tableView.backgroundColor = UIColor(named: "HomeColor")
         Task {
             await viewModel.loadDogBreeds()
-
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -40,7 +40,7 @@ class ListTableViewController: UITableViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(navigateToFavourites))
     }
-
+    
     // Returning the number of sections in the table - 1.
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -76,27 +76,28 @@ class ListTableViewController: UITableViewController {
     
     // Creating the functionality to edit the table view
     override func tableView(_ tableView: UITableView,
-                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
     {
         let modifyAction = UIContextualAction(style: .normal, title:  "Favourite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             self.viewModel.toggleFavorite(for: indexPath.row)
+            self.popupNotification(for: indexPath.row)
             tableView.reloadRows(at: [indexPath], with: .automatic)
-
+            
             success(true)
-
+            
             // After setting or updating the "favoriteBreeds" key in UserDefaults
             print("Favorite Breeds: \(UserDefaults.standard.array(forKey: "favoriteBreeds") ?? [])")
-
+            
         })
-
+        
         modifyAction.image = UIImage(systemName: "heart.fill")
-
+        
         modifyAction.backgroundColor = viewModel.isFavorite(for: indexPath.row) ? .green : .blue
-
+        
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
     
-    // Navigating to the detail view. 
+    // Navigating to the detail view.
     func navigateToDetail(forItemAt index: Int) {
         let detailViewController = DetailViewController(header: viewModel.items[index].breed.name)
         navigationController?.pushViewController(detailViewController, animated: true)
@@ -106,5 +107,13 @@ class ListTableViewController: UITableViewController {
     func navigateToFavourites() {
         let favouriteViewController = FavouriteViewController(favouriteViewModel: FavouriteViewModel())
         navigationController?.pushViewController(favouriteViewController, animated: true)
+    }
+    
+    func popupNotification(for index: Int) {
+        let isFavorite = viewModel.isFavorite(for: index)
+        let message = isFavorite ? "Added to favourites!" : "Removed from favourites!"
+        let favouritesAlert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        favouritesAlert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
+        present(favouritesAlert, animated: true, completion: nil)
     }
 }
