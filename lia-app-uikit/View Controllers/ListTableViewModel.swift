@@ -8,37 +8,28 @@
 import Foundation
 
 class ListTableViewModel {
+    var items: [Dog] = []
     
-    var items: [ListItem] = []
-    
-    func loadDogBreeds() async {
-        guard let breeds = await APIManager.shared.fetchDogBreeds() else {
-            print("Failed to load dog breeds")
+    func loadDogs() async {
+        guard let dogs = await APIManager.shared.fetchDogs() else {
             return
         }
                 
-        for breed in breeds {
-            items.append(ListItem(breed: breed))
+        for dog in dogs {
+            items.append(dog)
         }
     }
     
     func isFavorite(for index: Int) -> Bool {
-        // Check if the breed is a favorite based on the list of favorite breeds in UserDefaults
-        guard let favoriteBreeds = UserDefaults.standard.stringArray(forKey: "favoriteBreeds") else {
-            return false
-        }
-        return favoriteBreeds.contains(items[index].breed.name)
+        return Database.isInDatabase(items[index])
     }
     
     func toggleFavorite(for index: Int) {
-        var favoriteBreeds = UserDefaults.standard.stringArray(forKey: "favoriteBreeds") ?? []
-
-        if let index = favoriteBreeds.firstIndex(of: items[index].breed.name) {
-            favoriteBreeds.remove(at: index)
+        let dog = items[index]
+        if Database.isInDatabase(dog) {
+            Database.removeFromDatabase(dog)
         } else {
-            favoriteBreeds.append(items[index].breed.name)
+            Database.addToDatabase(dog)
         }
-
-        UserDefaults.standard.set(favoriteBreeds, forKey: "favoriteBreeds")
     }
 }

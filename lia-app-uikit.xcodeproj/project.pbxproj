@@ -25,6 +25,7 @@
 		31167F702BE033BE00C58976 /* lia_app_uikitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31167F6F2BE033BE00C58976 /* lia_app_uikitTests.swift */; };
 		31167F7A2BE033BE00C58976 /* lia_app_uikitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31167F792BE033BE00C58976 /* lia_app_uikitUITests.swift */; };
 		31167F7C2BE033BE00C58976 /* lia_app_uikitUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31167F7B2BE033BE00C58976 /* lia_app_uikitUITestsLaunchTests.swift */; };
+		31CC264D2C071CD80066A42C /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CC264C2C071CD80066A42C /* Database.swift */; };
 		DC5DC3032BFB84C600D5C6B8 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5DC3002BFB84C600D5C6B8 /* FavouriteViewController.swift */; };
 		DC5DC3042BFB84C600D5C6B8 /* ListTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5DC3012BFB84C600D5C6B8 /* ListTableViewModel.swift */; };
 		DC5DC3052BFB84C600D5C6B8 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5DC3022BFB84C600D5C6B8 /* FavouriteViewModel.swift */; };
@@ -72,6 +73,7 @@
 		31167F752BE033BE00C58976 /* lia-app-uikitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "lia-app-uikitUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31167F792BE033BE00C58976 /* lia_app_uikitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lia_app_uikitUITests.swift; sourceTree = "<group>"; };
 		31167F7B2BE033BE00C58976 /* lia_app_uikitUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = lia_app_uikitUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		31CC264C2C071CD80066A42C /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		DC5DC3002BFB84C600D5C6B8 /* FavouriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 		DC5DC3012BFB84C600D5C6B8 /* ListTableViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewModel.swift; sourceTree = "<group>"; };
 		DC5DC3022BFB84C600D5C6B8 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		31167F572BE033BC00C58976 /* lia-app-uikit */ = {
 			isa = PBXGroup;
 			children = (
+				31CC264B2C071CCB0066A42C /* Storage */,
 				3028DC1F2BFB81D000866B5D /* Fonts */,
 				3028DC1A2BF38D0300866B5D /* Utilities */,
 				DC9E0F522BE10E5600FED25D /* View Controllers */,
@@ -202,14 +205,22 @@
 			path = "lia-app-uikitUITests";
 			sourceTree = "<group>";
 		};
+		31CC264B2C071CCB0066A42C /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				31CC264C2C071CD80066A42C /* Database.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		DC9E0F522BE10E5600FED25D /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				DC5DC3002BFB84C600D5C6B8 /* FavouriteViewController.swift */,
 				DC5DC3022BFB84C600D5C6B8 /* FavouriteViewModel.swift */,
-				DC5DC3012BFB84C600D5C6B8 /* ListTableViewModel.swift */,
 				DC9E0F532BE10F4A00FED25D /* DetailViewController.swift */,
 				3006F8AA2BE0D700005878C9 /* ListTableViewController.swift */,
+				DC5DC3012BFB84C600D5C6B8 /* ListTableViewModel.swift */,
 				3070BF6A2BEA56BF00E59768 /* HomeView.swift */,
 			);
 			path = "View Controllers";
@@ -352,6 +363,7 @@
 				30906FCA2BE8FF490027A7D5 /* APIManager.swift in Sources */,
 				3028DC1C2BF38D6700866B5D /* String+Localization.swift in Sources */,
 				3070BF6B2BEA56BF00E59768 /* HomeView.swift in Sources */,
+				31CC264D2C071CD80066A42C /* Database.swift in Sources */,
 				31167F592BE033BC00C58976 /* AppDelegate.swift in Sources */,
 				DC5DC3032BFB84C600D5C6B8 /* FavouriteViewController.swift in Sources */,
 				31167F5B2BE033BC00C58976 /* SceneDelegate.swift in Sources */,
