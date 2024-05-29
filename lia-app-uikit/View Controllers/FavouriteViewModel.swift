@@ -24,6 +24,4 @@ class FavouriteViewModel {
         
         items.remove(at: index)
     }
-    
-    
 }
