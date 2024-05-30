@@ -54,8 +54,6 @@ class ListTableViewController: UITableViewController {
     // Creating and configuring a cell for each row in the table.
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        let myImage = UIImage(systemName: "star.fill")
-        cell.imageView?.image = myImage
         cell.textLabel?.text = viewModel.items[indexPath.row].name
         cell.textLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
         cell.accessoryType = .disclosureIndicator
