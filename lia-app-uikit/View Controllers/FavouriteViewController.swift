@@ -43,7 +43,7 @@ class FavouriteViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = viewModel.items[indexPath.row]
+        cell.textLabel?.text = viewModel.items[indexPath.row].name
         cell.textLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
         return cell
     }
@@ -55,7 +55,8 @@ class FavouriteViewController: UITableViewController {
     // Creating the functionality to edit the table view
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            viewModel.removeItem(at: indexPath.row)
+            let Dog = viewModel.items[indexPath.row]
+            viewModel.remove(Dog)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }

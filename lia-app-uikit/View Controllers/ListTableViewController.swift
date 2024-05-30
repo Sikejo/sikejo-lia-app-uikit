@@ -26,7 +26,7 @@ class ListTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = UIColor(named: "HomeColor")
         Task {
-            await viewModel.loadDogBreeds()
+            await viewModel.loadDogs()
             
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -56,7 +56,7 @@ class ListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let myImage = UIImage(systemName: "star.fill")
         cell.imageView?.image = myImage
-        cell.textLabel?.text = viewModel.items[indexPath.row].breed.name
+        cell.textLabel?.text = viewModel.items[indexPath.row].name
         cell.textLabel?.font = UIFont(name: "Nunito-Regular", size: 20)
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .default
@@ -85,8 +85,8 @@ class ListTableViewController: UITableViewController {
             
             success(true)
             
-            // After setting or updating the "favoriteBreeds" key in UserDefaults
-            print("Favorite Breeds: \(UserDefaults.standard.array(forKey: "favoriteBreeds") ?? [])")
+            // After setting or updating the "favorites" key in UserDefaults
+            print("Favorite Dogs: \(UserDefaults.standard.stringArray(forKey: "favorites") ?? [])")
             
         })
         
@@ -99,7 +99,7 @@ class ListTableViewController: UITableViewController {
     
     // Navigating to the detail view.
     func navigateToDetail(forItemAt index: Int) {
-        let detailViewController = DetailViewController(header: viewModel.items[index].breed.name)
+        let detailViewController = DetailViewController(header: viewModel.items[index].name)
         navigationController?.pushViewController(detailViewController, animated: true)
     }
     

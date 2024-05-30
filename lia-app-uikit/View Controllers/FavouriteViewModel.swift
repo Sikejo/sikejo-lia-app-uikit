@@ -8,20 +8,12 @@
 import Foundation
 
 class FavouriteViewModel {
+    var items: [Dog] = Database.fetchFromDatabase()
     
-    var items: [String] = UserDefaults.standard.stringArray(forKey: "favoriteBreeds") ?? []
-    
-    func removeItem(at index: Int) {
-        var favoriteBreeds = UserDefaults.standard.stringArray(forKey: "favoriteBreeds") ?? []
-
-        if let index = favoriteBreeds.firstIndex(of: items[index]) {
-            favoriteBreeds.remove(at: index)
-        } else {
-            favoriteBreeds.append(items[index])
+    func remove(_ dog: Dog) {
+        Database.removeFromDatabase(dog)
+        items.removeAll { item in
+            item.id == dog.id
         }
-
-        UserDefaults.standard.set(favoriteBreeds, forKey: "favoriteBreeds")
-        
-        items.remove(at: index)
     }
 }

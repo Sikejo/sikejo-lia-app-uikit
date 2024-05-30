@@ -20,7 +20,7 @@ class APIManager {
     // Define an asynchronous function to fetch dog breeds from the API
     let apiKey = Constants.API_KEY
     
-    func fetchDogBreeds() async -> [Breed]? {
+    func fetchDogs() async -> [Dog]? {
         // Concatenate the API key to the base URL for authentication
         let urlWithKey = "\(APIManager.shared.baseURL)?api_key=\(APIManager.shared.apiKey)"
         // Convert the string URL into a URL object. If this fails, return nil.
@@ -30,10 +30,10 @@ class APIManager {
         }
         do {
             // Attempt to get the data from the API using URLSession
-            let (data, status) = try await URLSession.shared.data(from: url)
+            let (data, _) = try await URLSession.shared.data(from: url)
             
-            // Decode the JSON data into an array of Breed objects
-            let breeds = try JSONDecoder().decode([Breed].self, from: data)
+            // Decode the JSON data into an array of Dog objects
+            let breeds = try JSONDecoder().decode([Dog].self, from: data)
             
             return breeds
         } catch {
