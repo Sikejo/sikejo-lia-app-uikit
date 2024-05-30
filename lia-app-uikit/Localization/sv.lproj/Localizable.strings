@@ -6,7 +6,7 @@
   
 */
 
-"welcome_message" = "Välkommen till Dog Lia Dog App";
+"welcome_message" = "Välkommen till denna Hund API app!";
 "good_morning" = "God morgon!";
 "good_afternoon" = "God eftermiddag!";
 "good_evening" = "God kväll!";

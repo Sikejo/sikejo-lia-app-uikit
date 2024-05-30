@@ -14,7 +14,7 @@
 		3028DC1C2BF38D6700866B5D /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3028DC1B2BF38D6700866B5D /* String+Localization.swift */; };
 		3028DC222BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3028DC202BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf */; };
 		3028DC232BFB81E900866B5D /* Nunito-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3028DC212BFB81E900866B5D /* Nunito-VariableFont_wght.ttf */; };
-		3070BF6B2BEA56BF00E59768 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070BF6A2BEA56BF00E59768 /* HomeView.swift */; };
+		3070BF6B2BEA56BF00E59768 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3070BF6A2BEA56BF00E59768 /* HomeViewController.swift */; };
 		30906FC62BE8FA600027A7D5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC52BE8FA600027A7D5 /* Constants.swift */; };
 		30906FC82BE8FC890027A7D5 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC72BE8FC890027A7D5 /* Models.swift */; };
 		30906FCA2BE8FF490027A7D5 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30906FC92BE8FF490027A7D5 /* APIManager.swift */; };
@@ -58,7 +58,7 @@
 		3028DC1B2BF38D6700866B5D /* String+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		3028DC202BFB81E900866B5D /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		3028DC212BFB81E900866B5D /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
-		3070BF6A2BEA56BF00E59768 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		3070BF6A2BEA56BF00E59768 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		30906FC52BE8FA600027A7D5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		30906FC72BE8FC890027A7D5 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		30906FC92BE8FF490027A7D5 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 				DC9E0F532BE10F4A00FED25D /* DetailViewController.swift */,
 				3006F8AA2BE0D700005878C9 /* ListTableViewController.swift */,
 				DC5DC3012BFB84C600D5C6B8 /* ListTableViewModel.swift */,
-				3070BF6A2BEA56BF00E59768 /* HomeView.swift */,
+				3070BF6A2BEA56BF00E59768 /* HomeViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -362,7 +362,7 @@
 			files = (
 				30906FCA2BE8FF490027A7D5 /* APIManager.swift in Sources */,
 				3028DC1C2BF38D6700866B5D /* String+Localization.swift in Sources */,
-				3070BF6B2BEA56BF00E59768 /* HomeView.swift in Sources */,
+				3070BF6B2BEA56BF00E59768 /* HomeViewController.swift in Sources */,
 				31CC264D2C071CD80066A42C /* Database.swift in Sources */,
 				31167F592BE033BC00C58976 /* AppDelegate.swift in Sources */,
 				DC5DC3032BFB84C600D5C6B8 /* FavouriteViewController.swift in Sources */,
