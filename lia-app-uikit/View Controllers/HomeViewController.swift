@@ -12,6 +12,20 @@ class HomeView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        view.backgroundColor = UIColor(named: "HomeColor")
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor(named: "HomeColor")
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
     private func setupUI() {
