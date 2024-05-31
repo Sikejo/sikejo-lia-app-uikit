@@ -6,7 +6,7 @@ class DetailViewController: UIViewController {
     
     private let imageView = UIImageView()
     
-    init(dog: Dog, referenceImageID: String
+    init(dog: Dog
     ) {
         self.dog = dog
         super.init(nibName: nil, bundle: nil)

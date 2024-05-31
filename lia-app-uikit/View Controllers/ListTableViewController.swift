@@ -98,9 +98,7 @@ class ListTableViewController: UITableViewController {
     func navigateToDetail(forItemAt index: Int) {
         if let dog = viewModel.items[index] as? Dog {
             let detailViewController = DetailViewController(
-                dog: dog,
-                referenceImageID: dog.referenceImageID ?? ""
-            )
+                dog: dog            )
             navigationController?.pushViewController(detailViewController, animated: true)
         } else {
             print("Failed to cast item to Dog")
