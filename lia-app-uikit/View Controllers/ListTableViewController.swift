@@ -95,10 +95,16 @@ class ListTableViewController: UITableViewController {
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
     
-    // Navigating to the detail view.
     func navigateToDetail(forItemAt index: Int) {
-        let detailViewController = DetailViewController(header: viewModel.items[index].name)
-        navigationController?.pushViewController(detailViewController, animated: true)
+        if let dog = viewModel.items[index] as? Dog {
+            let detailViewController = DetailViewController(
+                dog: dog,
+                referenceImageID: dog.referenceImageID ?? ""
+            )
+            navigationController?.pushViewController(detailViewController, animated: true)
+        } else {
+            print("Failed to cast item to Dog")
+        }
     }
     
     @objc
