@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class APIManager {
     
@@ -15,7 +16,6 @@ class APIManager {
     // Define the base URL for fetching dog breeds
     let baseURL = "https://api.thedogapi.com/v1/breeds?limit=1000&page=0"
     let infoURL = "https://api.thedogapi.com/v1/breeds/:breed_id"
-    let imageURL = "https://api.thedogapi.com/v1/images/:image_id?sub_id&include_vote=&include_favourite"
     
     // Define an asynchronous function to fetch dog breeds from the API
     let apiKey = Constants.API_KEY
@@ -42,4 +42,43 @@ class APIManager {
             return nil
         }
     }
-}
+    
+    func fetchImage(with referenceImageID: String, completion: @escaping (UIImage?) -> Void) {
+            let infoUrlString = "https://api.thedogapi.com/v1/images/\(referenceImageID)"
+            guard let infoUrl = URL(string: infoUrlString) else {
+                completion(nil)
+                return
+            }
+            
+            URLSession.shared.dataTask(with: infoUrl) { data, response, error in
+                guard let data = data, error == nil else {
+                    print("Error fetching image info: \(error?.localizedDescription ?? "Unknown error")")
+                    completion(nil)
+                    return
+                }
+                
+                do {
+                    guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                          let imageUrlString = json["url"] as? String,
+                          let imageUrl = URL(string: imageUrlString) else {
+                        completion(nil)
+                        return
+                    }
+                    
+                    URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+                        guard let data = data, error == nil else {
+                            print("Error fetching image: \(error?.localizedDescription ?? "Unknown error")")
+                            completion(nil)
+                            return
+                        }
+                        let image = UIImage(data: data)
+                        completion(image)
+                    }.resume()
+                    
+                } catch {
+                    print("Error parsing JSON: \(error.localizedDescription)")
+                    completion(nil)
+                }
+            }.resume()
+        }
+    }

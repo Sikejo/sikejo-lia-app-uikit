@@ -2,10 +2,13 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
-    var header: String
+    var dog: Dog
     
-    init(header: String) {
-        self.header = header
+    private let imageView = UIImageView()
+    
+    init(dog: Dog
+    ) {
+        self.dog = dog
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -16,10 +19,11 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        loadImage(referenceImageID: dog.referenceImageID ?? "Dog Image")
+        view.backgroundColor = UIColor(named: "HomeColor")
     }
-        
+    
     private func setupUI() {
-        
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.backgroundColor = UIColor(named: "HomeColor")
@@ -33,24 +37,42 @@ class DetailViewController: UIViewController {
         innerStackView.alignment = .fill
         innerStackView.distribution = .fill
         
-        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.image = UIImage(named: "dogimage")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.heightAnchor.constraint(lessThanOrEqualToConstant: 300).isActive = true
-
-        let titleLabel = CommonUI.styledLabel(text: header, fontSize: 25)
+        
+        let titleLabel = CommonUI.styledLabel(text: dog.name, fontSize: 25)
         titleLabel.textAlignment = .center
-
-        let bodyTextView = CommonUI.styledTextView(text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.", fontSize: 15)
+        
+        // Initialize the fullText variable with the breed temperament
+        var fullText = "Breed Temperament: \n" + (dog.temperament ?? "Unknown")
+        
+        // Append optional strings to the fullText if they are not nil and not empty
+        if let description = dog.description, !description.isEmpty {
+            fullText += "\n\nDescription: " + description
+        }
+        if let origin = dog.origin, !origin.isEmpty {
+            fullText += "\n\nOrigin: " + origin
+        }
+        if let history = dog.history, !history.isEmpty {
+            fullText += "\n\nHistory: " + history
+        }
+        if let bredFor = dog.bredFor, !bredFor.isEmpty {
+            fullText += "\n\nBred For: " + bredFor
+        }
+        
+        // Create the bodyTextView with the fullText
+        let bodyTextView = CommonUI.styledTextView(
+            text: fullText, fontSize: 17 )
         bodyTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         bodyTextView.textAlignment = .justified
         
         innerStackView.addArrangedSubview(titleLabel)
         innerStackView.addArrangedSubview(bodyTextView)
+        
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(innerStackView)
-
+        
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(stackView)
@@ -61,5 +83,17 @@ class DetailViewController: UIViewController {
             stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    private func loadImage(referenceImageID: String) {
+        APIManager.shared.fetchImage(with: referenceImageID) { [weak self] image in
+            DispatchQueue.main.async {
+                if let image = image {
+                    self?.imageView.image = image
+                } else {
+                    print("Failed to load image")
+                }
+            }
+        }
     }
 }
