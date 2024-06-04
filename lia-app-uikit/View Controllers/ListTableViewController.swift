@@ -73,27 +73,26 @@ class ListTableViewController: UITableViewController {
     }
     
     // Creating the functionality to edit the table view
-    override func tableView(_ tableView: UITableView,
-                            trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
-    {
-        let modifyAction = UIContextualAction(style: .normal, title:  "Favourite", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let modifyAction = UIContextualAction(style: .normal, title: "Favourite") { (action, view, completion) in
             self.viewModel.toggleFavorite(for: indexPath.row)
             self.popupNotification(for: indexPath.row)
             tableView.reloadRows(at: [indexPath], with: .automatic)
-            
-            success(true)
-            
-            // After setting or updating the "favorites" key in UserDefaults
+            completion(true)
+            // Update UserDefaults or any other required logic
             print("Favorite Dogs: \(UserDefaults.standard.stringArray(forKey: "favorites") ?? [])")
-            
-        })
+        }
         
-        modifyAction.image = UIImage(systemName: "heart.fill")
+        let isFavorite = viewModel.isFavorite(for: indexPath.row)
+        let imageName = isFavorite ? "heart.fill" : "heart.fill"
+        let tintColor = isFavorite ? UIColor.red : UIColor.lightGray
+        let image = UIImage(systemName: imageName)?.withTintColor(tintColor, renderingMode: .alwaysOriginal)
         
-        modifyAction.backgroundColor = viewModel.isFavorite(for: indexPath.row) ? .green : .blue
+        modifyAction.image = image
         
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
+
     
     // Navigating to the detail view.
     func navigateToDetail(forItemAt index: Int) {
