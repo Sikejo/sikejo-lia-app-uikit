@@ -60,5 +60,19 @@ class FavouriteViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigateToDetail(forItemAt: indexPath.row)
+    }
+    
+    func navigateToDetail(forItemAt index: Int) {
+        if let dog = viewModel.items[index] as? Dog {
+            let detailViewController = DetailViewController(
+                dog: dog            )
+            navigationController?.pushViewController(detailViewController, animated: true)
+        } else {
+            print("Failed to cast item to Dog")
+        }
+    }
 
 }
